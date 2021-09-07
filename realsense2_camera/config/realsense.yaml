@@ -1,7 +1,7 @@
 /t265_camera/t265_camera:
   ros__parameters:
     camera_name: t265_camera
-    serial_no: ''
+    serial_no: '944222110516'
     usb_port_id: ''
     device_type: t265
     config_file: ''
@@ -68,18 +68,12 @@
     rosbag_filename: ''
     temporal.holes_fill: 0
     tracking_module.frame_queue_size: 10
-    stereo_module.exposure.1: 7500
-    stereo_module.gain.1: 16
-    stereo_module.exposure.2: 1
-    stereo_module.gain.2: 16
-    stereo_module.auto_gain_limit: 247
-    stereo_module.auto_exposure_limit: 164999
 
 /d435_camera1/d435_camera1:
   ros__parameters:
     camera_name: d435_camera1
-    serial_no: '913422070791'
-    usb_port_id: ''
+    serial_no: '843112070385'
+    # usb_port_id: ''
     device_type: d435
     config_file: ''
     enable_pointcloud: true
@@ -94,16 +88,16 @@
     enable_color: true
     infra_width: -1
     infra_height: -1
-    enable_infra1: false
-    enable_infra2: false
+    enable_infra1: true
+    enable_infra2: true
     infra_rgb: false
     fisheye_width: -1
     fisheye_height: -1
-    enable_fisheye1: false
-    enable_fisheye2: false
+    enable_fisheye1: true
+    enable_fisheye2: true
     confidence_width: -1
     confidence_height: -1
-    enable_confidence: false
+    enable_confidence: true
     fisheye_fps: -1.
     depth_fps: 15.
     confidence_fps: -1.
@@ -121,13 +115,13 @@
     pointcloud_texture_stream: RS2_STREAM_COLOR
     pointcloud_texture_index: 0
     pointcloud.stream_index_filter: -1
-    enable_sync: false
+    enable_sync: true
     align_depth: true
     filters: ''
     clip_distance: -2.
     linear_accel_cov: 0.01
     initial_reset: true
-    allow_no_texture_points: false
+    allow_no_texture_points: true
     ordered_pc: false
     calib_odom_file: ''
     topic_odom_in: ''
@@ -148,18 +142,22 @@
     tf_publish_rate: 0.0
     rosbag_filename: ''
     temporal.holes_fill: 0
-    rgb_camera.enable_auto_exposure: false
-    rgb_camera.exposure: 600
-    rgb_camera.gain: 64
+    rgb_camera.enable_auto_exposure: true
+    stereo_module.exposure.1: 7500
+    stereo_module.gain.1: 16
+    stereo_module.exposure.2: 1
+    stereo_module.gain.2: 16
+    stereo_module.auto_gain_limit: 247
+    stereo_module.auto_exposure_limit: 164999
 
 /d435_camera2/d435_camera2:
   ros__parameters:
     camera_name: d435_camera2
-    serial_no: '843112070385'
-    usb_port_id: ''
+    serial_no: '913422070791'
+    # usb_port_id: ''
     device_type: d435
     config_file: ''
-    enable_pointcloud: true
+    enable_pointcloud: false
     unite_imu_method: ''
     json_file_path: ''
     output: screen
@@ -180,7 +178,7 @@
     enable_fisheye2: false
     confidence_width: -1
     confidence_height: -1
-    enable_confidence: false
+    enable_confidence: true
     fisheye_fps: -1.
     depth_fps: 15.
     confidence_fps: -1.
@@ -224,6 +222,10 @@
     tf_publish_rate: 0.0
     rosbag_filename: ''
     temporal.holes_fill: 0
-    rgb_camera.enable_auto_exposure: false
-    rgb_camera.exposure: 600
-    rgb_camera.gain: 64
+    rgb_camera.enable_auto_exposure: true
+    stereo_module.exposure.1: 7500
+    stereo_module.gain.1: 16
+    stereo_module.exposure.2: 1
+    stereo_module.gain.2: 16
+    stereo_module.auto_gain_limit: 247
+    stereo_module.auto_exposure_limit: 164999

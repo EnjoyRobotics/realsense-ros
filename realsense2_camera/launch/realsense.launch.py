@@ -1,1 +1,0 @@
-../../../localization/launch/realsense.launch.py

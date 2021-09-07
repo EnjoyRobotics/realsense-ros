@@ -32,7 +32,7 @@ def generate_launch_description():
 		namespace='t265_camera',
 		emulate_tty=True,
 		prefix=['stdbuf -o L'],
-		parameters=[realsense_cam_parameters, {'use_sim_time':arg_use_sim_time}],
+		parameters=[realsense_cam_parameters],
 		remappings=[('odom/sample', 'odom')],
 	)
 
@@ -44,7 +44,6 @@ def generate_launch_description():
 		emulate_tty=True,
 		prefix=['stdbuf -o L'],
 		parameters=[realsense_cam_parameters],
-		#  parameters=[realsense_cam_parameters, {'use_sim_time':arg_use_sim_time, 'serial_number': '843112070385'}],
 	)
 
 	d435_camera2 = Node(
@@ -55,13 +54,12 @@ def generate_launch_description():
 		emulate_tty=True,
 		prefix=['stdbuf -o L'],
 		parameters=[realsense_cam_parameters],
-		#  parameters=[realsense_cam_parameters, {'use_sim_time':arg_use_sim_time, 'serial_number': '913422070791'}],
 	)
 
 
 	def start_t265_camera(text):
 		global counter
-		if 'RealsenseNode Is Up' in str(text):
+		if 'RealSense Node Is Up' in str(text):
 			counter += 1
 		if counter == 2:
 			counter = 3 # launch only once
@@ -77,11 +75,11 @@ def generate_launch_description():
 			d435_camera1,
 			d435_camera2,
 
-            RegisterEventHandler(
-            event_handler=OnProcessIO(
-                on_stderr=lambda info: start_t265_camera(info.text)
-            )),
-        ]
+			RegisterEventHandler(
+			event_handler=OnProcessIO(
+				on_stderr=lambda info: start_t265_camera(info.text)
+			)),
+		]
 	)
 
 	return ld
