@@ -1,4 +1,4 @@
-ARG FROM_IMAGE=rtabmap_ros
+ARG FROM_IMAGE=ros:galactic
 ARG OVERLAY_WS=/opt/ros/overlay_ws
 
 # multi-stage for caching
@@ -9,7 +9,6 @@ ARG OVERLAY_WS
 WORKDIR /$OVERLAY_WS/src
 
 COPY . ./realsense-ros
-
 
 # copy manifests for caching
 WORKDIR /opt
@@ -32,9 +31,6 @@ RUN apt install ros-galactic-librealsense2 -y
 RUN apt install libssl-dev libusb-1.0-0-dev pkg-config libgtk-3-dev -y
 RUN apt install libglfw3-dev libgl1-mesa-dev libglu1-mesa-dev -y
 RUN apt install ros-galactic-cv-bridge ros-galactic-message-filters ros-galactic-image-transport -y
-
-#rtabmap and localization dependencies
-RUN apt install libgeographic-dev -y
 
 
 # install overlay dependencies
@@ -65,4 +61,4 @@ RUN sed --in-place --expression \
       /ros_entrypoint.sh
 
 # run launch file
-CMD ["ros2", "launch", "realsense2_camera", "rs_launch.py"]
+CMD ["ros2", "launch", "realsense2_camera", "rs_bringup.launch.py"]

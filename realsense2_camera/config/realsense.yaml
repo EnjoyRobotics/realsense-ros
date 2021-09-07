@@ -99,10 +99,10 @@
     confidence_height: -1
     enable_confidence: true
     fisheye_fps: -1.
-    depth_fps: 15.
+    depth_fps: 30.
     confidence_fps: -1.
     infra_fps: -1.
-    color_fps: 15.
+    color_fps: 30.
     gyro_fps: -1.
     accel_fps: -1.
     color_qos: SYSTEM_DEFAULT
@@ -180,10 +180,10 @@
     confidence_height: -1
     enable_confidence: true
     fisheye_fps: -1.
-    depth_fps: 15.
+    depth_fps: 30.
     confidence_fps: -1.
     infra_fps: -1.
-    color_fps: 15.
+    color_fps: 30.
     gyro_fps: -1.
     accel_fps: -1.
     color_qos: SYSTEM_DEFAULT
