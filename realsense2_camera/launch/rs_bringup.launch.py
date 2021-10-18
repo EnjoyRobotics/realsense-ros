@@ -44,6 +44,7 @@ def generate_launch_description():
 		emulate_tty=True,
 		prefix=['stdbuf -o L'],
 		parameters=[realsense_cam_parameters],
+		remappings=[('/d435_camera1/depth/color/points', '/cloud_in')],
 	)
 
 	d435_camera2 = Node(
@@ -54,6 +55,7 @@ def generate_launch_description():
 		emulate_tty=True,
 		prefix=['stdbuf -o L'],
 		parameters=[realsense_cam_parameters],
+		remappings=[('/d435_camera2/depth/color/points', '/cloud_in')],
 	)
 
 

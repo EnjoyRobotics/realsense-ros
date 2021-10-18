@@ -1,8 +1,9 @@
 /t265_camera/t265_camera:
   ros__parameters:
     camera_name: t265_camera
-    serial_no: '944222110516'
-    usb_port_id: ''
+    serial_no: '943222110239'
+    # serial_no: '948422110357'
+    # usb_port_id: ''
     device_type: t265
     config_file: ''
     enable_pointcloud: false
@@ -11,14 +12,14 @@
     output: screen
     depth_width: -1
     depth_height: -1
-    enable_depth: true
+    enable_depth: false
     color_width: -1
     color_height: -1
-    enable_color: true
+    enable_color: false
     infra_width: -1
     infra_height: -1
-    enable_infra1: true
-    enable_infra2: true
+    enable_infra1: false
+    enable_infra2: false
     infra_rgb: false
     fisheye_width: -1
     fisheye_height: -1
@@ -27,35 +28,33 @@
     confidence_width: -1
     confidence_height: -1
     enable_confidence: true
-    fisheye_fps: -1.
-    depth_fps: -1.
-    confidence_fps: -1.
-    infra_fps: -1.
-    color_fps: -1.
-    gyro_fps: -1.
-    accel_fps: -1.
+    fisheye_fps: 30.
+    depth_fps: 15.
+    confidence_fps: 30.
+    infra_fps: 30.
+    color_fps: 15.
+    gyro_fps: 30.
+    accel_fps: 30.
     color_qos: SYSTEM_DEFAULT
     confidence_qos: SYSTEM_DEFAULT
     depth_qos: SYSTEM_DEFAULT
     fisheye_qos: SYSTEM_DEFAULT
     infra_qos: SYSTEM_DEFAULT
-    enable_gyro: false
-    enable_accel: false
-    pointcloud_texture_stream: RS2_STREAM_COLOR
-    pointcloud_texture_index: 0
+    enable_gyro: true
+    enable_accel: true
     enable_sync: false
     align_depth: false
     filters: ''
     clip_distance: -2.
     linear_accel_cov: 0.01
-    initial_reset: true
+    initial_reset: false
     allow_no_texture_points: false
     ordered_pc: false
     enable_pose: true
     calib_odom_file: ''
     topic_odom_in: ''
     publish_tf: true
-    publish_odom_tf: false
+    publish_odom_tf: true
     base_frame_id: t265_camera_link
     pose_frame_id: t265_camera_pose_frame
     pose_optical_frame_id: t265_camera_pose_optical_frame
@@ -67,11 +66,12 @@
     tf_publish_rate: 0.0
     rosbag_filename: ''
     temporal.holes_fill: 0
-    tracking_module.frame_queue_size: 10
+    tracking_module.frames_queue_size: 10
 
 /d435_camera1/d435_camera1:
   ros__parameters:
     camera_name: d435_camera1
+    # serial_no: '913422070791'
     serial_no: '843112070385'
     # usb_port_id: ''
     device_type: d435
@@ -80,52 +80,54 @@
     unite_imu_method: ''
     json_file_path: ''
     output: screen
-    depth_width: 640
-    depth_height: 480
+    depth_width: 1280
+    depth_height: 720
     enable_depth: true
-    color_width: 640
-    color_height: 480
+    color_width: 1280
+    color_height: 720
     enable_color: true
     infra_width: -1
     infra_height: -1
-    enable_infra1: true
-    enable_infra2: true
+    enable_infra1: false
+    enable_infra2: false
     infra_rgb: false
     fisheye_width: -1
     fisheye_height: -1
-    enable_fisheye1: true
-    enable_fisheye2: true
+    enable_fisheye1: false
+    enable_fisheye2: false
     confidence_width: -1
     confidence_height: -1
-    enable_confidence: true
-    fisheye_fps: -1.
-    depth_fps: 30.
-    confidence_fps: -1.
-    infra_fps: -1.
-    color_fps: 30.
-    gyro_fps: -1.
-    accel_fps: -1.
-    color_qos: SYSTEM_DEFAULT
+    enable_confidence: false
+    enable_pose: false
+    fisheye_fps: 30.
+    depth_fps: 5.
+    confidence_fps: 30.
+    infra_fps: 30.
+    color_fps: 5.
+    gyro_fps: 30.
+    accel_fps: 30.
+    color_qos: SENSOR_DATA
+    color_info_qos: SENSOR_DATA
     confidence_qos: SYSTEM_DEFAULT
-    depth_qos: SYSTEM_DEFAULT
+    depth_qos: SENSOR_DATA
+    depth_info_qos: SENSOR_DATA
     fisheye_qos: SYSTEM_DEFAULT
     infra_qos: SYSTEM_DEFAULT
+    pointcloud_qos: SENSOR_DATA
     enable_gyro: false
     enable_accel: false
     pointcloud_texture_stream: RS2_STREAM_COLOR
     pointcloud_texture_index: 0
-    pointcloud.stream_index_filter: -1
     enable_sync: true
-    align_depth: true
+    align_depth: false
     filters: ''
-    clip_distance: -2.
+    clip_distance: 4.0
     linear_accel_cov: 0.01
     initial_reset: true
     allow_no_texture_points: true
-    ordered_pc: false
     calib_odom_file: ''
     topic_odom_in: ''
-    publish_tf: true
+    publish_tf: false
     publish_odom_tf: false
     base_frame_id: d435_camera1_link
     pose_frame_id: d435_camera1_pose_frame
@@ -143,34 +145,39 @@
     rosbag_filename: ''
     temporal.holes_fill: 0
     rgb_camera.enable_auto_exposure: true
-    stereo_module.exposure.1: 7500
-    stereo_module.gain.1: 16
-    stereo_module.exposure.2: 1
-    stereo_module.gain.2: 16
-    stereo_module.auto_gain_limit: 247
-    stereo_module.auto_exposure_limit: 164999
+    stereo_module.visual_preset: 3
+    stereo_module.emitter_enabled: 1
+    # stereo_module.emitter_always_on: true
+    # stereo_module.laser_power: 360.0
+    # stereo_module.output_trigger_enabled: false
+    stereo_module.auto_exposure_limit: 165000
+    stereo_module.auto_gain_limit: 248
+    ordered_pc: false
+    pointcloud.stream_index_filter: -1
+
 
 /d435_camera2/d435_camera2:
   ros__parameters:
     camera_name: d435_camera2
+    # serial_no: '843112070385'
     serial_no: '913422070791'
     # usb_port_id: ''
     device_type: d435
     config_file: ''
-    enable_pointcloud: false
+    enable_pointcloud: true
     unite_imu_method: ''
     json_file_path: ''
     output: screen
-    depth_width: 640
-    depth_height: 480
+    depth_width: 1280
+    depth_height: 720
     enable_depth: true
-    color_width: 640
-    color_height: 480
+    color_width: 1280
+    color_height: 720
     enable_color: true
     infra_width: -1
     infra_height: -1
-    enable_infra1: true
-    enable_infra2: true
+    enable_infra1: false
+    enable_infra2: false
     infra_rgb: false
     fisheye_width: -1
     fisheye_height: -1
@@ -178,34 +185,37 @@
     enable_fisheye2: false
     confidence_width: -1
     confidence_height: -1
-    enable_confidence: true
-    fisheye_fps: -1.
-    depth_fps: 30.
-    confidence_fps: -1.
-    infra_fps: -1.
-    color_fps: 30.
-    gyro_fps: -1.
-    accel_fps: -1.
-    color_qos: SYSTEM_DEFAULT
+    enable_confidence: false
+    enable_pose: false
+    fisheye_fps: 30.
+    depth_fps: 5.
+    confidence_fps: 30.
+    infra_fps: 30.
+    color_fps: 5.
+    gyro_fps: 30.
+    accel_fps: 30.
+    color_qos: SENSOR_DATA
+    color_info_qos: SENSOR_DATA
     confidence_qos: SYSTEM_DEFAULT
-    depth_qos: SYSTEM_DEFAULT
+    depth_qos: SENSOR_DATA
+    depth_info_qos: SENSOR_DATA
     fisheye_qos: SYSTEM_DEFAULT
     infra_qos: SYSTEM_DEFAULT
+    pointcloud_qos: SENSOR_DATA
     enable_gyro: false
     enable_accel: false
     pointcloud_texture_stream: RS2_STREAM_COLOR
     pointcloud_texture_index: 0
-    enable_sync: false
-    align_depth: true
+    enable_sync: true
+    align_depth: false
     filters: ''
-    clip_distance: -2.
+    clip_distance: 4.0
     linear_accel_cov: 0.01
     initial_reset: true
-    allow_no_texture_points: false
-    ordered_pc: false
+    allow_no_texture_points: true
     calib_odom_file: ''
     topic_odom_in: ''
-    publish_tf: true
+    publish_tf: false
     publish_odom_tf: false
     base_frame_id: d435_camera2_link
     pose_frame_id: d435_camera2_pose_frame
@@ -223,9 +233,12 @@
     rosbag_filename: ''
     temporal.holes_fill: 0
     rgb_camera.enable_auto_exposure: true
-    stereo_module.exposure.1: 7500
-    stereo_module.gain.1: 16
-    stereo_module.exposure.2: 1
-    stereo_module.gain.2: 16
-    stereo_module.auto_gain_limit: 247
-    stereo_module.auto_exposure_limit: 164999
+    stereo_module.visual_preset: 3
+    stereo_module.emitter_enabled: 1
+    # stereo_module.laser_power: 360.0
+    # stereo_module.emitter_always_on: true
+    # stereo_module.output_trigger_enabled: false
+    stereo_module.auto_exposure_limit: 165000
+    stereo_module.auto_gain_limit: 248
+    ordered_pc: false
+    pointcloud.stream_index_filter: -1
