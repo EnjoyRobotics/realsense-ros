@@ -14,7 +14,7 @@ from launch.substitutions import EnvironmentVariable, PythonExpression
 from typing import Text
 import xacro
 
-counter = 0
+counter = 1
 
 def generate_launch_description():
 
@@ -36,26 +36,15 @@ def generate_launch_description():
 		remappings=[('odom/sample', 'odom')],
 	)
 
-	d435_camera1 = Node(
+	d435_camera = Node(
 		package='realsense2_camera',
 		executable='realsense2_camera_node',
-		name='d435_camera1',
-		namespace='d435_camera1',
+		name='d435_camera',
+		namespace='d435_camera',
 		emulate_tty=True,
 		prefix=['stdbuf -o L'],
 		parameters=[realsense_cam_parameters],
-		remappings=[('/d435_camera1/depth/color/points', '/cloud_in')],
-	)
-
-	d435_camera2 = Node(
-		package='realsense2_camera',
-		executable='realsense2_camera_node',
-		name='d435_camera2',
-		namespace='d435_camera2',
-		emulate_tty=True,
-		prefix=['stdbuf -o L'],
-		parameters=[realsense_cam_parameters],
-		remappings=[('/d435_camera2/depth/color/points', '/cloud_in')],
+		remappings=[('/d435_camera/depth/color/points', '/cloud_in')],
 	)
 
 
@@ -74,8 +63,7 @@ def generate_launch_description():
 		# args
 		[
 			DeclareLaunchArgument('use_sim_time',	  default_value='false'),
-			d435_camera1,
-			d435_camera2,
+			d435_camera,
 
 			RegisterEventHandler(
 			event_handler=OnProcessIO(

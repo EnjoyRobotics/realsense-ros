@@ -1,8 +1,8 @@
 /t265_camera/t265_camera:
   ros__parameters:
     camera_name: t265_camera
-    serial_no: '943222110239'
-    # serial_no: '948422110357'
+    serial_no: '944222110516'
+    # serial_no: '943222110239'
     # usb_port_id: ''
     device_type: t265
     config_file: ''
@@ -52,7 +52,7 @@
     ordered_pc: false
     enable_pose: true
     calib_odom_file: ''
-    topic_odom_in: ''
+    topic_odom_in: 'odom_wheel'
     publish_tf: true
     publish_odom_tf: true
     base_frame_id: t265_camera_link
@@ -68,97 +68,9 @@
     temporal.holes_fill: 0
     tracking_module.frames_queue_size: 10
 
-/d435_camera1/d435_camera1:
+/d435_camera/d435_camera:
   ros__parameters:
-    camera_name: d435_camera1
-    # serial_no: '913422070791'
-    serial_no: '843112070385'
-    # usb_port_id: ''
-    device_type: d435
-    config_file: ''
-    enable_pointcloud: true
-    unite_imu_method: ''
-    json_file_path: ''
-    output: screen
-    depth_width: 1280
-    depth_height: 720
-    enable_depth: true
-    color_width: 1280
-    color_height: 720
-    enable_color: true
-    infra_width: -1
-    infra_height: -1
-    enable_infra1: false
-    enable_infra2: false
-    infra_rgb: false
-    fisheye_width: -1
-    fisheye_height: -1
-    enable_fisheye1: false
-    enable_fisheye2: false
-    confidence_width: -1
-    confidence_height: -1
-    enable_confidence: false
-    enable_pose: false
-    fisheye_fps: 30.
-    depth_fps: 5.
-    confidence_fps: 30.
-    infra_fps: 30.
-    color_fps: 5.
-    gyro_fps: 30.
-    accel_fps: 30.
-    color_qos: SENSOR_DATA
-    color_info_qos: SENSOR_DATA
-    confidence_qos: SYSTEM_DEFAULT
-    depth_qos: SENSOR_DATA
-    depth_info_qos: SENSOR_DATA
-    fisheye_qos: SYSTEM_DEFAULT
-    infra_qos: SYSTEM_DEFAULT
-    pointcloud_qos: SENSOR_DATA
-    enable_gyro: false
-    enable_accel: false
-    pointcloud_texture_stream: RS2_STREAM_COLOR
-    pointcloud_texture_index: 0
-    enable_sync: true
-    align_depth: false
-    filters: ''
-    clip_distance: 4.0
-    linear_accel_cov: 0.01
-    initial_reset: true
-    allow_no_texture_points: true
-    calib_odom_file: ''
-    topic_odom_in: ''
-    publish_tf: false
-    publish_odom_tf: false
-    base_frame_id: d435_camera1_link
-    pose_frame_id: d435_camera1_pose_frame
-    pose_optical_frame_id: d435_camera1_pose_optical_frame
-    fisheye1_frame_id: d435_camera1_fisheye1_frame
-    fisheye1_optical_frame_id: d435_camera1_fisheye1_optical_frame
-    fisheye2_frame_id: d435_camera1_fisheye2_frame
-    fisheye2_optical_frame_id: d435_camera1_fisheye2_optical_frame
-    color_frame_id: d435_camera1_color_frame
-    color_optical_frame_id: d435_camera1_color_optical_frame
-    depth_frame_id: d435_camera1_depth_frame
-    depth_optical_frame_id: d435_camera1_depth_optical_frame
-    odom_frame_id: odom
-    tf_publish_rate: 0.0
-    rosbag_filename: ''
-    temporal.holes_fill: 0
-    rgb_camera.enable_auto_exposure: true
-    stereo_module.visual_preset: 3
-    stereo_module.emitter_enabled: 1
-    # stereo_module.emitter_always_on: true
-    # stereo_module.laser_power: 360.0
-    # stereo_module.output_trigger_enabled: false
-    stereo_module.auto_exposure_limit: 165000
-    stereo_module.auto_gain_limit: 248
-    ordered_pc: false
-    pointcloud.stream_index_filter: -1
-
-
-/d435_camera2/d435_camera2:
-  ros__parameters:
-    camera_name: d435_camera2
+    camera_name: d435_camera
     # serial_no: '843112070385'
     serial_no: '913422070791'
     # usb_port_id: ''
@@ -217,17 +129,17 @@
     topic_odom_in: ''
     publish_tf: false
     publish_odom_tf: false
-    base_frame_id: d435_camera2_link
-    pose_frame_id: d435_camera2_pose_frame
-    pose_optical_frame_id: d435_camera2_pose_optical_frame
-    fisheye1_frame_id: d435_camera2_fisheye1_frame
-    fisheye1_optical_frame_id: d435_camera2_fisheye1_optical_frame
-    fisheye2_frame_id: d435_camera2_fisheye2_frame
-    fisheye2_optical_frame_id: d435_camera2_fisheye2_optical_frame
-    color_frame_id: d435_camera2_color_frame
-    color_optical_frame_id: d435_camera2_color_optical_frame
-    depth_frame_id: d435_camera2_depth_frame
-    depth_optical_frame_id: d435_camera2_depth_optical_frame
+    base_frame_id: d435_camera_link
+    pose_frame_id: d435_camera_pose_frame
+    pose_optical_frame_id: d435_camera_pose_optical_frame
+    fisheye1_frame_id: d435_camera_fisheye1_frame
+    fisheye1_optical_frame_id: d435_camera_fisheye1_optical_frame
+    fisheye2_frame_id: d435_camera_fisheye2_frame
+    fisheye2_optical_frame_id: d435_camera_fisheye2_optical_frame
+    color_frame_id: d435_camera_color_frame
+    color_optical_frame_id: d435_camera_color_optical_frame
+    depth_frame_id: d435_camera_depth_frame
+    depth_optical_frame_id: d435_camera_depth_optical_frame
     odom_frame_id: odom
     tf_publish_rate: 0.0
     rosbag_filename: ''
