@@ -55,7 +55,7 @@
     calib_odom_file: ''
     topic_odom_in: 'odom_wheel'
     publish_tf: true
-    publish_odom_tf: true
+    publish_odom_tf: false
     base_frame_id: t265_camera_link
     pose_frame_id: t265_camera_pose_frame
     pose_optical_frame_id: t265_camera_pose_optical_frame
