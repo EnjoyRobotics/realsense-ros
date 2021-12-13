@@ -1799,10 +1799,10 @@ void BaseRealSenseNode::pose_callback(rs2::frame frame)
     // pose_msg.pose.position.z = pose.translation.y;
     pose_msg.pose.position.z = 0.0;
     pose_msg.pose.orientation.x = -pose.rotation.z;
-    // pose_msg.pose.orientation.y = -pose.rotation.x;
-    pose_msg.pose.orientation.y = 0.0;
+    pose_msg.pose.orientation.y = -pose.rotation.x;
+    // pose_msg.pose.orientation.y = 0.0;
     pose_msg.pose.orientation.z = pose.rotation.y;
-    pose_msg.pose.orientation.w = pose.rotation.w - pose.rotation.x;
+    pose_msg.pose.orientation.w = pose.rotation.w; //- pose.rotation.x;
 
     static tf2_ros::TransformBroadcaster br(_node);
     geometry_msgs::msg::TransformStamped msg;
