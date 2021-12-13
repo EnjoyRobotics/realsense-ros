@@ -1,9 +1,8 @@
 /t265_camera/t265_camera:
   ros__parameters:
     camera_name: t265_camera
-    # serial_no: '944222110516'
-    serial_no: '943222110262'
-    # serial_no: '943222110239'
+    serial_no: '944222110516'
+    # serial_no: '943222110262'
     # usb_port_id: ''
     device_type: t265
     config_file: ''
@@ -72,9 +71,7 @@
 /d435_camera/d435_camera:
   ros__parameters:
     camera_name: d435_camera
-    # serial_no: '843112070385'
-    # serial_no: '913422070791'
-    serial_no: '943222073635'
+    serial_no: '913422070791'
     # usb_port_id: ''
     device_type: d435
     config_file: ''
@@ -149,8 +146,8 @@
     rgb_camera.enable_auto_exposure: true
     stereo_module.visual_preset: 3
     stereo_module.emitter_enabled: 1
-    # stereo_module.laser_power: 360.0
-    # stereo_module.emitter_always_on: true
+    stereo_module.laser_power: 360.0
+    stereo_module.emitter_always_on: true
     # stereo_module.output_trigger_enabled: false
     stereo_module.auto_exposure_limit: 165000
     stereo_module.auto_gain_limit: 248
