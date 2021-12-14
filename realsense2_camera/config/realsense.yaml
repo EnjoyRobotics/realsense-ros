@@ -1,7 +1,7 @@
 /t265_camera/t265_camera:
   ros__parameters:
     camera_name: t265_camera
-    serial_no: '944222110516'
+    serial_no: '943222073635'
     # serial_no: '943222110262'
     # usb_port_id: ''
     device_type: t265
