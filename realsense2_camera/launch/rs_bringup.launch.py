@@ -25,6 +25,8 @@ def generate_launch_description():
 
 	realsense_cam_parameters = os.path.join(get_package_share_directory('realsense2_camera'), 'config', 'realsense.yaml')
 
+	preset_file = os.path.join(get_package_share_directory('realsense2_camera'), 'config', 'high_accuracy_preset.json')
+
 	t265_camera = Node(
 		package='realsense2_camera',
 		executable='realsense2_camera_node',
@@ -43,7 +45,7 @@ def generate_launch_description():
 		namespace='d435_camera',
 		emulate_tty=True,
 		prefix=['stdbuf -o L'],
-		parameters=[realsense_cam_parameters],
+		parameters=[realsense_cam_parameters, {'json_file_path': preset_file}],
 		remappings=[('/d435_camera/depth/color/points', '/cloud_in')],
 	)
 
