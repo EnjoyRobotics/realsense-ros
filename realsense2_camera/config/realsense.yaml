@@ -139,7 +139,7 @@
     rosbag_filename: ''
     temporal.holes_fill: 0
     rgb_camera.enable_auto_exposure: true
-    stereo_module.visual_preset: 3
+    stereo_module.visual_preset: 4
     stereo_module.emitter_enabled: 1
     stereo_module.laser_power: 360.0
     stereo_module.emitter_always_on: true
