@@ -49,7 +49,7 @@
     ordered_pc: false
     enable_pose: true
     calib_odom_file: ''
-    topic_odom_in: 'odom_wheel'
+    topic_odom_in: ''
     publish_tf: true
     publish_odom_tf: false
     base_frame_id: t265_camera_link
