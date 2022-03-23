@@ -39,7 +39,7 @@ def generate_launch_description():
 		namespace='t265_camera',
 		emulate_tty=True,
 		prefix=['stdbuf -o L'],
-		parameters=[realsense_cam_parameters],
+		parameters=[realsense_cam_parameters, {'use_sim_time': arg_use_sim_time}],
 		remappings=[('odom/sample', 'odom')],
 		condition=UnlessCondition(arg_simulation),
 	)
@@ -51,7 +51,7 @@ def generate_launch_description():
 		namespace='d435_camera',
 		emulate_tty=True,
 		prefix=['stdbuf -o L'],
-		parameters=[realsense_cam_parameters, {'json_file_path': preset_file}],
+		parameters=[realsense_cam_parameters, {'json_file_path': preset_file, 'use_sim_time': arg_use_sim_time}],
 		remappings=[('/d435_camera/depth/color/points', '/cloud_in')],
 		condition=UnlessCondition(arg_simulation),
 	)
@@ -72,7 +72,7 @@ def generate_launch_description():
 		# args
 		[
 			DeclareLaunchArgument('simulation',       default_value=simulation),
-			DeclareLaunchArgument('use_sim_time',	  default_value='false'),
+			DeclareLaunchArgument('use_sim_time',     default_value='false'),
 			d435_camera,
 
 			RegisterEventHandler(
