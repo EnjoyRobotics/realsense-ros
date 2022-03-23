@@ -7,7 +7,7 @@ from launch.actions import ExecuteProcess, IncludeLaunchDescription, RegisterEve
 from launch.event_handlers import OnProcessIO
 from launch.launch_description_sources import PythonLaunchDescriptionSource
 from launch.substitutions import LaunchConfiguration
-from launch.conditions import IfCondition
+from launch.conditions import IfCondition, UnlessCondition
 from launch_ros.actions import Node
 from launch.substitutions import EnvironmentVariable, PythonExpression
 
@@ -20,6 +20,11 @@ def generate_launch_description():
 
 	# args
 	arg_use_sim_time = LaunchConfiguration('use_sim_time')
+	arg_simulation   = LaunchConfiguration('simulation')
+
+	simulation = os.environ.get('SIMULATION')
+	if simulation in [None, '']:
+		simulation = 'False'
 
 	output = 'screen'
 
@@ -34,8 +39,9 @@ def generate_launch_description():
 		namespace='t265_camera',
 		emulate_tty=True,
 		prefix=['stdbuf -o L'],
-		parameters=[realsense_cam_parameters],
+		parameters=[realsense_cam_parameters, {'use_sim_time': arg_use_sim_time}],
 		remappings=[('odom/sample', 'odom')],
+		condition=UnlessCondition(arg_simulation),
 	)
 
 	d435_camera = Node(
@@ -45,8 +51,9 @@ def generate_launch_description():
 		namespace='d435_camera',
 		emulate_tty=True,
 		prefix=['stdbuf -o L'],
-		parameters=[realsense_cam_parameters, {'json_file_path': preset_file}],
+		parameters=[realsense_cam_parameters, {'json_file_path': preset_file, 'use_sim_time': arg_use_sim_time}],
 		remappings=[('/d435_camera/depth/color/points', '/cloud_in')],
+		condition=UnlessCondition(arg_simulation),
 	)
 
 
@@ -64,7 +71,8 @@ def generate_launch_description():
 	ld = LaunchDescription(
 		# args
 		[
-			DeclareLaunchArgument('use_sim_time',	  default_value='false'),
+			DeclareLaunchArgument('simulation',       default_value=simulation),
+			DeclareLaunchArgument('use_sim_time',     default_value='false'),
 			d435_camera,
 
 			RegisterEventHandler(
