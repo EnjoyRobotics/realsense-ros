@@ -36,12 +36,9 @@ ARG OVERLAY_WS
 WORKDIR $OVERLAY_WS
 COPY --from=cacher /tmp/$OVERLAY_WS/src ./src
 RUN . /opt/ros/$ROS_DISTRO/setup.sh && \
-    apt-get update && rosdep install -y \
-      --from-paths src\
-      --ignore-src\
-      --skip-keys find_object_2d
-
-RUN rm -rf /var/lib/apt/lists/*
+  rosdep install -y --from-paths src \
+  --ignore-src --skip-keys find_object_2d && \
+  rm -rf /var/lib/apt/lists/*
 
 # build overlay source
 COPY --from=cacher $OVERLAY_WS/src ./src
