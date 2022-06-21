@@ -26,11 +26,9 @@ ENV DEBIAN_FRONTEND noninteractive
 ENV export MAKEFLAGS="-j12"
 
 # realsense dependencies
-RUN apt update
-RUN apt install ros-galactic-librealsense2 -y
-RUN apt install libssl-dev libusb-1.0-0-dev pkg-config libgtk-3-dev -y
-RUN apt install libglfw3-dev libgl1-mesa-dev libglu1-mesa-dev -y
-RUN apt install ros-galactic-cv-bridge ros-galactic-message-filters ros-galactic-image-transport -y
+RUN apt update --fix-missing && apt install -y ros-galactic-librealsense2 libssl-dev \ 
+  libusb-1.0-0-dev pkg-config libgtk-3-dev libglfw3-dev libgl1-mesa-dev libglu1-mesa-dev \ 
+  ros-galactic-cv-bridge ros-galactic-message-filters ros-galactic-image-transport
 
 
 # install overlay dependencies
