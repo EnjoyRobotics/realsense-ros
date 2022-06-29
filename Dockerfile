@@ -1,11 +1,10 @@
 ARG FROM_IMAGE=ros:galactic
-ARG OVERLAY_WS=/opt/ros/overlay_ws
 
 # multi-stage for caching
 FROM $FROM_IMAGE AS cacher
 
 # clone overlay source
-ARG OVERLAY_WS
+ARG OVERLAY_WS=/opt/ros/overlay_ws
 WORKDIR /$OVERLAY_WS/src
 
 COPY . ./realsense-ros
@@ -32,7 +31,7 @@ RUN apt update --fix-missing && apt install -y ros-galactic-librealsense2 libssl
 
 
 # install overlay dependencies
-ARG OVERLAY_WS
+ARG OVERLAY_WS=/opt/ros/overlay_ws
 WORKDIR $OVERLAY_WS
 COPY --from=cacher /tmp/$OVERLAY_WS/src ./src
 RUN . /opt/ros/$ROS_DISTRO/setup.sh && \
